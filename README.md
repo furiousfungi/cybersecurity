@@ -1,1 +1,1 @@
-Access to this repository is strictly verboten without public authority
+Changes to this repository are strictly verboten without public authority
