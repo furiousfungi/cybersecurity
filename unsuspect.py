@@ -1,4 +1,5 @@
 import socket
+from pathlib import Path
 
 def scan_port(ip, port):
     try:
@@ -14,12 +15,14 @@ hostname = socket.gethostname()
 
 ipaddr = socket.gethostbyname(hostname)
 common_ports = [80,443, 22, 21]
+with open('ports_status_report.txt', 'w') as file:
+    for port in common_ports:
+        if scan_port(ipaddr, port):
+            file.write(f"{port} is open\n")
+        else:
+            file.write(f"{port} is closed\n")
 
-for port in common_ports:
-    if scan_port(ipaddr, port):
-        print(f"{port} is open")
-    else:
-        print(f"{port} is closed")
+file.close()
 
 
 
