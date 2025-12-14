@@ -1,5 +1,8 @@
 from pathlib import Path
 import socket
+from scanport import scan_port
+
+open('ports_status_report.txt', 'w').close()
 
 class Malware:
     def __init__(self, content):
@@ -13,12 +16,31 @@ class Malware:
         ipadr = socket.gethostbyname(hostname)
         file_path = Path(self.content)
         with file_path.open('a') as file:
-            file.write(f"\nYour ip address is {ipadr}")
+            file.write(f"Your ip address is {ipadr}\n\n")
         file.close()
 
-virus1 = Malware('stored.txt')
-virus1.display()
+class Showports:
+    def scanner(self):
+        hostname = socket.gethostname()
+        ipaddr = socket.gethostbyname(hostname)
+        common_ports = [80, 443, 22, 21]
+        with open('ports_status_report.txt', 'a') as file:
+            for port in common_ports:
+                if scan_port(ipaddr, port):
+                    file.write(f"{port} is open\n")
+                else:
+                    file.write(f"{port} is closed\n")
+
+        file.close()
+
+virus1 = Malware('ports_status_report.txt')
 virus1.showip()
+virus2 = Showports()
+virus2.scanner()
+
+
+
+
 
 
 
