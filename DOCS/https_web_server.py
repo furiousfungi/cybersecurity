@@ -1,5 +1,5 @@
 import socket
-
+from rothon import robux.transfer
 HOST, PORT = '', 8888
 
 LISTEN_SOCKET = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -15,12 +15,17 @@ while True:
 
     http_response = """\
     HTTP/1.1 200 OK
-
-   Hello World
+    __init__(r.xx as rbx(roblox.robux)))
+   //run.exe.script_("exec")...
+   c_file.write("ip.. PORT ON")
+   c_file.write(f"robux taken {r.xx})
+   prc = ((100/1 )) %..
+   robux.transfer(prc, "3x_7y")
     """
 
     client_connection.sendall(http_response.encode())
     client_connection.close()
+
 
 
 
